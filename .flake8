@@ -1,0 +1,54 @@
+[flake8]
+################### PROGRAM ################################
+jobs = auto
+
+################### OUTPUT #################################
+verbose = 0
+quiet = 0
+format = default
+count = True
+show-source = True
+statistics = True
+output-file = .flake8.log
+tee = True
+
+################### FILE PATTERNS ##########################
+exclude =
+    .git,
+    __pycache__,
+    .pytest_cache,
+    .mypy_cache,
+    .venv, venv,
+    database_data, database_backups,
+    alembic/
+filename = *.py
+
+################### LINTING ################################
+disable-noqa = False
+max-line-length = 120
+max-complexity = 14
+hang-closing = True
+
+########## Rules ##########
+ignore =
+    E133,
+    E203,
+    E402,
+    W503,
+    W291,
+    W293,
+    E251,
+    E501
+
+select =
+    Q0,
+    C90,
+    E,
+    W,
+    F,
+    C
+per-file-ignores = __init__.py:F401,F403
+doctests = True
+include-in-doctest =
+exclude-in-doctest =
+inline-quotes = single

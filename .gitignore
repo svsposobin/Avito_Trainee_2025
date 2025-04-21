@@ -1,0 +1,27 @@
+# Pycache:
+*.pyc
+*.tmp
+__pycache__/
+
+# mypy -- cache
+.mypy_cache/
+
+# env file
+.env
+
+# Local files
+*.log
+logs/
+
+# Environments
+.venv
+
+# IDE:
+.idea/
+
+# Unit test / coverage reports
+.coverage
+htmlcov/
+.pytest_cache/
+.tox/
+.nox/

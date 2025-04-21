@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: ../..
+      dockerfile: deploy/local/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - PSG_LOCAL_HOST=db
+      - PSG_LOCAL_PORT=5432
+      - PSG_LOCAL_USER=pvz_avito
+      - PSG_LOCAL_PASSWORD=qwerty
+      - PSG_LOCAL_NAME=pvz_avito_service
+    networks:
+      - app-network
+    command: >
+      bash -c "python -c 'from asyncio import run; from postgres.sql.init_tables import Tables; run(Tables.init())' && uvicorn src.main:app --host 0.0.0.0 --port 8080"
+
+  db:
+    image: postgres:14
+    environment:
+      - POSTGRES_USER=pvz_avito
+      - POSTGRES_PASSWORD=qwerty
+      - POSTGRES_DB=pvz_avito_service
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network:
+    driver: bridge

@@ -1,0 +1,26 @@
+# venv
+.venv/
+venv/
+
+# Pycache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# tests
+tests/
+test/
+*_test.py
+
+# system/ide
+.git/
+.idea/
+*.swp
+*.swo
+
+# logs and temps
+*.log
+*.tmp
+
+# Other files
+*.init_tables.py

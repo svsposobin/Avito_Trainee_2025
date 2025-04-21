@@ -1,0 +1,9 @@
+[project]
+name = 'avito-trainee-2025-spring'
+
+[tool.mypy]
+disallow_any_generics = false
+check_untyped_defs = true
+warn_return_any = false
+ignore_missing_imports = false
+exclude = ['alembic/']
